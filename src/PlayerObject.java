@@ -14,11 +14,11 @@ public class PlayerObject extends GameObject {
         this.controller = controller;
         this.speed = speed;
         if (player == 1) {
-            position = new Position(350, 440); //Startposition
+            position = new Position(350, 440); //Startposition for player 1
         }
 
         if (player == 2){
-            position = new Position(250,440);
+            position = new Position(250,440); //Starposition for player 2
         }
 
     }
@@ -28,6 +28,8 @@ public class PlayerObject extends GameObject {
         speedX = 0;
 
         oldPosX = position.getX(); //Gemmer tidligere x koordinat
+
+        //Player 1
             if (controller.isRequestiongLeft() && player==1){
                 speedX = speedX - this.speed;
             }
@@ -35,7 +37,7 @@ public class PlayerObject extends GameObject {
                 speedX = speedX + this.speed;
             }
 
-
+        //Player 2
             if (controller.isRequestiongA() && player==2){
                 speedX = speedX - this.speed;
             }
