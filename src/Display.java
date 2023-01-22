@@ -45,11 +45,19 @@ public class Display extends JFrame {
         ));
 
         //Tegner tiden
+        GraphicalDrawing graphicalDrawing = new GraphicalDrawing();
         game.getGameTime().forEach(tid -> graphics.drawImage(
-                tid.getSprite(),
+                graphicalDrawing.getSpriteTest(100,50,Color.PINK, tid.getTextInImage()),
                 tid.position.getX(),
                 tid.position.getY(), null
         ));
+
+        //Den gamle lambda expression
+       /* game.getGameTime().forEach(tid -> graphics.drawImage(
+                tid.getSprite(),
+                tid.position.getX(),
+                tid.position.getY(), null
+        ));*/
 
         game.currentLevelDisplay(graphics); //Tegner level boksen
         graphics.dispose();

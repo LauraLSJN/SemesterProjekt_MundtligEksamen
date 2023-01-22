@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.awt.font.TextAttribute;
-import java.awt.image.BufferedImage;
 import java.text.AttributedString;
 import java.text.DecimalFormat;
 
@@ -17,9 +15,15 @@ public class GameTime {
     private int xText = 15;
     private int width = 100;
     private int height = 50;
+    GraphicalDrawing graphicalDrawing = new GraphicalDrawing();
+
+
 
     //TEKST
     private Font font = new Font("Monospaced", Font.BOLD, fontSize);
+
+
+
     private String textInImage;
     private AttributedString attributedText;
     private Size size;
@@ -32,6 +36,10 @@ public class GameTime {
         position = new Position(size.getDisplayWidth() - width, 0);
     }
 
+
+    public String getTextInImage() {
+        return textInImage;
+    }
     public void updateGameTime() {
         if (milliSecond == 0 && minute == 0 && second == 0) {
             milliSecond = 0;
@@ -62,7 +70,7 @@ public class GameTime {
         this.milliSecond = 0;
     }
 
-    public Image getSprite() {
+  /*  public Image getSprite() {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = image.createGraphics();
         graphics.setColor(Color.PINK);
@@ -76,7 +84,8 @@ public class GameTime {
         attributedText.addAttribute(TextAttribute.FONT, font); //Font
         attributedText.addAttribute(TextAttribute.FOREGROUND, Color.WHITE); //Sættes til foreground + farve = hvid
         graphics.drawString(attributedText.getIterator(), xText, (height / 2) + 5); //Placeres i billede -> X og y kordinat er i henhold til image
-    }
+    }*/
+
 
 
     public int getMilliSecond() {
