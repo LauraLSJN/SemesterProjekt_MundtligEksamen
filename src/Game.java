@@ -30,7 +30,7 @@ public class Game {
 
         //Tid
         gameTime = new ArrayList<>();
-        gameTime.add(new GameTime());
+       // gameTime.add(new GameTime());
 
         //Shoppingkurven
         shoppingBaskets = new ArrayList<>();
@@ -63,26 +63,31 @@ public class Game {
     //Metode der styrer levels
     public void addLevels() {
         if (currentLevel == 1) {
+            gameTime.add(new GameTime(0,30,0));
             shoppingBaskets.add(new ShoppingBasket(5));
             gameObject.add(new PlayerObject(new Player(input), 1));
             addFoodObjects();
 
         } else if (currentLevel == 2) {
+            gameTime.add(new GameTime(1,0,0));
             shoppingBaskets.add(new ShoppingBasket(30));
             gameObject.add(new PlayerObject(new Player(input), 2));
             addFoodObjects();
 
         } else if (currentLevel == 3) {
+            gameTime.add(new GameTime(2,0,0));
             shoppingBaskets.add(new ShoppingBasket(50));
             gameObject.add(new PlayerObject(new Player(input), 3));
             addFoodObjects();
 
         } else if (currentLevel == 4) {
+            gameTime.add(new GameTime(2,0,0));
             shoppingBaskets.add(new ShoppingBasket(100));
             gameObject.add(new PlayerObject(new Player(input), 4));
             addFoodObjects();
 
         } else if (currentLevel == 5) {
+            gameTime.add(new GameTime(2,0,0));
             shoppingBaskets.add(new ShoppingBasket(150));
             gameObject.add(new PlayerObject(new Player(input), 5));
             addFoodObjects();
