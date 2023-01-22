@@ -6,25 +6,46 @@ public class PlayerObject extends GameObject {
     private int speedX;
     private int speed;
     private int oldPosX;
+    private int player;
     public Image imgPlayer = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingKurv3.png");
 
-    public PlayerObject(Controller controller, int speed) {
+    public PlayerObject(Controller controller, int speed, int player) {
+        this.player = player;
         this.controller = controller;
         this.speed = speed;
-        position = new Position(350,440); //Startposition
+        if (player == 1) {
+            position = new Position(350, 440); //Startposition for player 1
+        }
+
+        if (player == 2){
+            position = new Position(250,440); //Starposition for player 2
+        }
 
     }
 
     @Override
     public void updateGameObject() {
         speedX = 0;
+
         oldPosX = position.getX(); //Gemmer tidligere x koordinat
-            if (controller.isRequestiongLeft()) {
+
+        //Player 1
+            if (controller.isRequestiongLeft() && player==1){
                 speedX = speedX - this.speed;
             }
-            if (controller.isRequestiongRight()) {
+            if (controller.isRequestiongRight() && player==1) {
                 speedX = speedX + this.speed;
             }
+
+        //Player 2
+            if (controller.isRequestiongA() && player==2){
+                speedX = speedX - this.speed;
+            }
+             if (controller.isRequestiongD() && player==2){
+            speedX = speedX + this.speed;
+        }
+
+
         position.setX(oldPosX+ speedX); //Sætter ny x-koordinat
     }
 

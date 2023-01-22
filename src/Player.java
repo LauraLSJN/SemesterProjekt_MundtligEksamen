@@ -16,4 +16,14 @@ public class Player implements Controller{
     public boolean isRequestiongRight() {
         return input.isPressed(KeyEvent.VK_RIGHT); // Højre pil (Tastatur)
     }
+
+    @Override
+    public boolean isRequestiongA() {
+        return input.isPressed(KeyEvent.VK_A);
+    }
+
+    @Override
+    public boolean isRequestiongD() {
+        return input.isPressed(KeyEvent.VK_D);
+    }
 }

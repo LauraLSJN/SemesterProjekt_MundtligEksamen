@@ -8,7 +8,7 @@ public class GameTime {
     public Position position;
     private int milliSecond;
     private int second;
-    private int minute = 2;
+    private int minute;
     private String dfSecond; //df = DecimalFormat
     private String dfMinute; //df = DecimalFormat
     private String dfMinSec; //df = DecimalFormat
@@ -24,7 +24,10 @@ public class GameTime {
     private AttributedString attributedText;
     private Size size;
 
-    public GameTime() {
+    public GameTime(int minute, int second, int milliSecond) {
+        this.minute = minute;
+        this.second = second;
+        this.milliSecond = milliSecond;
         size = new Size();
         position = new Position(size.getDisplayWidth() - width, 0);
     }

@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Game {
     private Random random = new Random();
     private Display display;
-    private ArrayList<GameObject> gameObject; //ArrayList af Objekter = GameObject
+    private ArrayList<GameObject> gameObject;//ArrayList af Objekter = GameObject
     private ArrayList<ShoppingBasket> shoppingBaskets;
     private ArrayList<GameTime> gameTime;
     private Input input; //Input fra brugeren
@@ -30,7 +30,7 @@ public class Game {
 
         //Tid
         gameTime = new ArrayList<>();
-        gameTime.add(new GameTime());
+       // gameTime.add(new GameTime());
 
         //Shoppingkurven
         shoppingBaskets = new ArrayList<>();
@@ -63,28 +63,38 @@ public class Game {
     //Metode der styrer levels
     public void addLevels() {
         if (currentLevel == 1) {
+            gameTime.add(new GameTime(0,30,0));
             shoppingBaskets.add(new ShoppingBasket(5));
-            gameObject.add(new PlayerObject(new Player(input), 1));
+            gameObject.add(new PlayerObject(new Player(input), 1,1));
+            gameObject.add(new PlayerObject(new Player(input), 1,2));
             addFoodObjects();
 
         } else if (currentLevel == 2) {
+            gameTime.add(new GameTime(1,0,0));
             shoppingBaskets.add(new ShoppingBasket(30));
-            gameObject.add(new PlayerObject(new Player(input), 2));
+            gameObject.add(new PlayerObject(new Player(input), 2,1));
+            gameObject.add(new PlayerObject(new Player(input), 2,2));
             addFoodObjects();
 
         } else if (currentLevel == 3) {
+            gameTime.add(new GameTime(2,0,0));
             shoppingBaskets.add(new ShoppingBasket(50));
-            gameObject.add(new PlayerObject(new Player(input), 3));
+            gameObject.add(new PlayerObject(new Player(input), 3,1));
+            gameObject.add(new PlayerObject(new Player(input), 3,2));
             addFoodObjects();
 
         } else if (currentLevel == 4) {
+            gameTime.add(new GameTime(2,0,0));
             shoppingBaskets.add(new ShoppingBasket(100));
-            gameObject.add(new PlayerObject(new Player(input), 4));
+            gameObject.add(new PlayerObject(new Player(input), 4,1));
+            gameObject.add(new PlayerObject(new Player(input), 4,2));
             addFoodObjects();
 
         } else if (currentLevel == 5) {
+            gameTime.add(new GameTime(2,0,0));
             shoppingBaskets.add(new ShoppingBasket(150));
-            gameObject.add(new PlayerObject(new Player(input), 5));
+            gameObject.add(new PlayerObject(new Player(input), 5,1));
+            gameObject.add(new PlayerObject(new Player(input), 5,2));
             addFoodObjects();
         }
     }
@@ -147,13 +157,25 @@ public class Game {
 
     //Metode til hvorvidt firkanterne på displayet rammer hinanden
     public void collision() {
-        for (int x = 1; x < gameObject.size(); x++) {
-            if ((gameObject.get(x).getPosition().getX() >= (gameObject.get(0).getPosition().getX() - 30)) // food x >= player x - 30
+        for (int x = 2; x < gameObject.size(); x++) {
+            if (
+                    //Player 1
+                    (gameObject.get(x).getPosition().getX() >= (gameObject.get(0).getPosition().getX() - 30)) // food x >= player x - 30
                     && (gameObject.get(x).getPosition().getX() <= (gameObject.get(0).getPosition().getX() + size.getPlayerObjectWidth() + 20)) //food x <= player x+ size + 20
                     && ((gameObject.get(x).getPosition().getY() + size.getFoodObjectHeight()) >= gameObject.get(0).getPosition().getY() + 5) // food y + size >= player y +5
                     && ((gameObject.get(x).getPosition().getY() + size.getFoodObjectHeight()) <= (gameObject.get(0).getPosition().getY() + size.getPlayerObjectHeight() + 20)) //food y <= player y + size + 20
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) >= (gameObject.get(0).getPosition().getX() - 35)) //food x + size >= player x -35
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) <= (gameObject.get(0).getPosition().getX() + size.getFoodObjectWidth() + 60)) //food x + size <= player x + size + 60
+                ||
+                    //Player 2
+                        (gameObject.get(x).getPosition().getX() >= (gameObject.get(1).getPosition().getX() - 30))
+                    && (gameObject.get(x).getPosition().getX() <= (gameObject.get(1).getPosition().getX() + size.getPlayerObjectWidth() + 20))
+                    && ((gameObject.get(x).getPosition().getY() + size.getFoodObjectHeight()) >= gameObject.get(1).getPosition().getY() + 5) // food y + size >= player y +5
+                    && ((gameObject.get(x).getPosition().getY() + size.getFoodObjectHeight()) <= (gameObject.get(1).getPosition().getY() + size.getPlayerObjectHeight() + 20)) //food y <= player y + size + 20
+                    && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) >= (gameObject.get(1).getPosition().getX() - 35)) //food x + size >= player x -35
+                    && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) <= (gameObject.get(1).getPosition().getX() + size.getFoodObjectWidth() + 60)) //food x + size <= player x + size + 60
+
+
             ) {
                 //ADD
                 shoppingBaskets.get(0).addCollectedFood(gameObject.get(x).price.getPrice());
@@ -166,7 +188,7 @@ public class Game {
 
     //Metode fjerner gameObjects der er udenfor display
     public void detectionOutOfDisplay() {
-        for (int i = 1; i < gameObject.size(); i++) {
+        for (int i = 2; i < gameObject.size(); i++) {
             if (gameObject.get(i).getPosition().getY() >= gameObject.get(0).getPosition().getY() + size.getPlayerObjectHeight()) { //food y >= player y + player height
                 gameObject.remove(i);
             }
