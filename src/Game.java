@@ -192,6 +192,9 @@ public class Game {
             if (gameObject.get(i).getPosition().getY() >= gameObject.get(0).getPosition().getY() + size.getPlayerObjectHeight()) { //food y >= player y + player height
                 gameObject.remove(i);
             }
+            if (gameObject.get(i).getPosition().getY() >= gameObject.get(1).getPosition().getY() + size.getPlayerObjectHeight()) { //food y >= player y + player height
+                gameObject.remove(i);
+            }
         }
     }
 
