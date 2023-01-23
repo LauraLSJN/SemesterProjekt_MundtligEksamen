@@ -51,17 +51,18 @@ public class Game {
 
     //Metode som opdateres med framerate
     public void updateGame() {
-        gameObject.forEach(gameObject -> gameObject.updateGameObject());
+        gameObject.forEach(gameObject -> gameObject.updateGameObject()); //Positionen der opdateres for hvert element i gameObjcts arraylisten
         detectionOutOfDisplay();
         collision();
         checkGameState();
         dropFoodObjects();
-        gameTime.forEach(gameTime -> gameTime.updateGameTime());
+        gameTime.forEach(gameTime -> gameTime.updateGameTime()); //Kaldes i updateGame, således at tiden bliver opdateret.
+        //Shoppingbasket update er der ikke, da addCollectedFood metoden bliver kaldt i kollision og derved bliver opdateret gennem getSprite i display
 
     }
 
     //Metode der styrer levels
-    public void addLevels() {
+    public void addLevels() { //Alternativt switch case -> Bedre når man har mange else if statement
         if (currentLevel == 1) {
             gameTime.add(new GameTime(0,30,0));
             shoppingBaskets.add(new ShoppingBasket(5));
@@ -122,7 +123,13 @@ public class Game {
         if (this.stopDropFoodObjects == false && randomNumber <= 25) { //Hvis stopDropFoodObject er falsk og randomNumber er mindre end eller lig 25, tilføjes nye foodObjects
             addFoodObjects();
         }
+        //Hvis de ikke skal ramme hinanden:
+        //Samme logik som collision, sammenligne foodobjects position, og hvis de rammer hinanden skal den nye foodobjects have en ny position
+        //Dette betyder dog at det nye foodobject er tilføjet på displyet og derefter skal fjernes
     }
+
+    //Metode hvor man kan se, der hvor den skal placeres om der er ledigt eller ej og kun tilføje foodobjects hvis der er ledigt
+    //Her skal tiden også anvendes, for hvis der er gået mere end 1-3 sekunder før sidste drop, kan man godt tilføje
 
     //Metode der fjerne alle objekter i arrayListen gameObjects
     public void removeGameObjects() {
@@ -139,8 +146,8 @@ public class Game {
             removeGameObjects();
             setWon(true);
             currentLevel++;
-            display.levelWindow(currentLevel, true);
-            display.dispose();
+            display.levelWindow(currentLevel, true); //Knapperne til næste level
+            display.dispose(); //Fjerner selve spillet -> Da da ovenfor generes et nyt vindue
         }
 
         if ((gameTime.get(0).getMilliSecond() == 0) && (gameTime.get(0).getSecond() == 0) && (gameTime.get(0).getMinute() == 0) && (this.stopDropFoodObjects == false)) {
@@ -148,7 +155,7 @@ public class Game {
             removeGameObjects();
             setLost(true);
 
-            if (isWon() == false && isLost() == true) {
+            if (isWon() == false && isLost() == true) { //isWon kan fjernes, da den altid vil være falsk hvis den er gået ind i denne statement
                 display.levelWindow(currentLevel, false);
                 display.dispose();
             }
@@ -196,7 +203,7 @@ public class Game {
     }
 
     //Metode til at lave currentlevel boksen
-    public void currentLevelDisplay(Graphics g) {
+    public void currentLevelDisplay(Graphics g) { //Kan slettes, og anvende GraphicalDrawing klasse istedet
         int tekstBoksWidth = 125;
         int tekstBoksHeight = 50;
         int tekstBoksX = 0;

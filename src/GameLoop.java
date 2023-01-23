@@ -1,7 +1,7 @@
 public class GameLoop implements Runnable {
     private Game game;
     private boolean running;
-    private final double UPDATE_RATE = 1.0d / 60.0d;
+    private final double UPDATE_RATE = 1.0d / 60.0d; //1.0d / 60.0d;
     private long nextStatTime;
 
     public GameLoop(Game game) {
@@ -24,6 +24,8 @@ public class GameLoop implements Runnable {
             if (accumulator >= UPDATE_RATE) {
                 while (accumulator >= UPDATE_RATE) {
                     updateGameLoop();
+                    System.out.println("Opdaterer gameloop");
+                    System.out.println(nextStatTime);
                     accumulator -= UPDATE_RATE;
                 }
                 renderGameLoop();

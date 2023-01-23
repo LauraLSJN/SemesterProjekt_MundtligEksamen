@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.font.TextAttribute;
+import java.awt.image.BufferedImage;
 import java.text.AttributedString;
 import java.text.DecimalFormat;
 
@@ -15,7 +17,6 @@ public class GameTime {
     private int xText = 15;
     private int width = 100;
     private int height = 50;
-    GraphicalDrawing graphicalDrawing = new GraphicalDrawing();
 
 
 
@@ -34,6 +35,7 @@ public class GameTime {
         this.milliSecond = milliSecond;
         size = new Size();
         position = new Position(size.getDisplayWidth() - width, 0);
+
     }
 
 
@@ -41,7 +43,7 @@ public class GameTime {
         return textInImage;
     }
     public void updateGameTime() {
-        if (milliSecond == 0 && minute == 0 && second == 0) {
+        if (milliSecond == 0 && minute == 0 && second == 0) { //Sikre at den ikke går i minus
             milliSecond = 0;
             minute = 0;
             second = 0;
@@ -70,7 +72,7 @@ public class GameTime {
         this.milliSecond = 0;
     }
 
-  /*  public Image getSprite() {
+    /*public Image getSprite() {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = image.createGraphics();
         graphics.setColor(Color.PINK);

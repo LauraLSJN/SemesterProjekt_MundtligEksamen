@@ -22,12 +22,12 @@ public class StartGameWindow {
         JButton startBtn = new JButton("Klik her for at starte MyFoodSolver");//Tekst i knappen
         startBtn.setFont(new Font("Monospaced", Font.BOLD, 25));//Font på teksten
         startBtn.setForeground(Color.PINK);//Farve på tekst
-        startBtn.setPreferredSize(new Dimension(size.getDisplayWidth(), size.getDisplayHeight()));//Størrelse på knappen
+        startBtn.setPreferredSize(new Dimension(size.getDisplayWidth(), size.getDisplayHeight()));//Størrelse på knappen -> Hele GUI
         startBtn.addActionListener(e -> launchGameLevel.start());//Actionlistener når knappen trykkes skal spillet starte -> metode start i LaunchGameLevel
 
         window.add(startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
         window.pack();//tegner alt indhold
-        window.setLocationRelativeTo(null);//Placerer vinduet
+        window.setLocationRelativeTo(null); //Placerer GUI i midten af skræmen, når den er null ellers fra venstra top på computer skærm
         window.setVisible(true);//Gør vinduet synlig
 
     }

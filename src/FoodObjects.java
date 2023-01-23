@@ -11,15 +11,15 @@ public class FoodObjects extends GameObject {
     private String textInFoodObject;
     private AttributedString attributedText;
     private int speedFoodObject;
-    private Color colorFoodObject;
+    private Color colorFoodObject; //Lokal variabel for denne klasse
     private ColorInGame color;
 
     public FoodObjects(int speed, boolean randomPrice, boolean randomColor){
         position = new Position(random.nextInt(size.getDisplayWidth()- size.getFoodObjectWidth()),0 ); //Placeres indenfor display -> display width-foodObjectWidth, så hele firkenten er indenfor display
-        isRandomPrice(randomPrice);
+        isRandomPrice(randomPrice); //Anvendes til at tjekke om prisen skal random eller 5 -> Level
         color = new ColorInGame();
-        textInFoodObject = String.valueOf(price.getPrice());
-        setColor(randomColor);
+        textInFoodObject = String.valueOf(price.getPrice()); //Konvertere price som er int, til tekst som er string
+        setColor(randomColor); //Anvendes til at tjekke om farven skal være random eller grøn og rød -> Level
         this.speedFoodObject = speed;
     }
 

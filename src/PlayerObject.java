@@ -6,7 +6,7 @@ public class PlayerObject extends GameObject {
     private int speedX;
     private int speed;
     private int oldPosX;
-    private int player;
+    private int player; //I henhold til player 1 og 2
     public Image imgPlayer = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingKurv3.png");
 
     public PlayerObject(Controller controller, int speed, int player) {
@@ -25,7 +25,7 @@ public class PlayerObject extends GameObject {
 
     @Override
     public void updateGameObject() {
-        speedX = 0;
+        speedX = 0; //Sikre at den ikke hele tiden bevæger sig
 
         oldPosX = position.getX(); //Gemmer tidligere x koordinat
 
