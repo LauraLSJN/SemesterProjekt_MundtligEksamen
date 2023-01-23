@@ -12,16 +12,18 @@ public class LaunchGameLevel extends JPanel {
         ActionListener actionListener = pressed -> { //Når trykkes på knap, skal vinduet fjernes
             window.dispose();
         };
-        //timer = new Timer(200, actionListener);
+        timer = new Timer(200, actionListener);
     }
 
-   public void start() {
-        //timer.start();
+   public void start() { //JFrame window
+       timer.start();
+      // window.dispose();
         new Thread(new GameLoop(new Game(1))).start();//starter spillet på level 1
+
     }
 
     public void startLevel(int currentlevel){
-        //timer.start();
+        timer.start();
         new Thread(new GameLoop(new Game(currentlevel))).start();//starter et nyt game på level angivet i parameteren
     }
 }
