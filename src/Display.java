@@ -43,6 +43,7 @@ public class Display extends JFrame {
                 shoppingBasket.position.getX(),
                 shoppingBasket.position.getY(), null
         ));
+        //Test
 
         //Tegner tiden
         GraphicalDrawing graphicalDrawing = new GraphicalDrawing();
