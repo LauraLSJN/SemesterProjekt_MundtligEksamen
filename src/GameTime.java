@@ -15,7 +15,7 @@ public class GameTime {
     private int xText = 15;
     private int width = 100;
     private int height = 50;
-    GraphicalDrawing graphicalDrawing = new GraphicalDrawing();
+  //  GraphicalDrawing graphicalDrawing = new GraphicalDrawing();
 
 
 

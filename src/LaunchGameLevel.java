@@ -11,9 +11,11 @@ public class LaunchGameLevel extends JPanel {
         timer = new Timer(200, actionListener);
     }
 
-   public void start() {
-        timer.start();
+   public void start() { //JFrame window
+       timer.start();
+      // window.dispose();
         new Thread(new GameLoop(new Game(1))).start();//starter spillet på level 1
+
     }
 
     public void startLevel(int currentlevel){
