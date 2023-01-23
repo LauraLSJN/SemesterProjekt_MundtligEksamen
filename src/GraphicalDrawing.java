@@ -13,7 +13,7 @@ public class GraphicalDrawing {
 
     }
 
-    public Image getSpriteTest(int width, int height, Color farve, String textInImage){
+    public Image getSpriteTest(int width, int height, Color farve, String textInImage, int textX, int textY){
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = image.createGraphics();
         graphics.setColor(farve);
@@ -22,7 +22,7 @@ public class GraphicalDrawing {
         attributedText.addAttribute(TextAttribute.FONT, font);
         attributedText.addAttribute(TextAttribute.FOREGROUND, Color.WHITE);
         //Skal finde ud af hvordan x og y gøres generiske alt efter hvilken klasse element der skal tegnes
-        graphics.drawString(attributedText.getIterator(), 15, 30);
+        graphics.drawString(attributedText.getIterator(), textX, textY);
 
 
         return image;

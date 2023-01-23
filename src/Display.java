@@ -47,7 +47,7 @@ public class Display extends JFrame {
         //Tegner tiden
         GraphicalDrawing graphicalDrawing = new GraphicalDrawing();
         game.getGameTime().forEach(tid -> graphics.drawImage(
-                graphicalDrawing.getSpriteTest(100,50,Color.PINK, tid.getTextInImage()),
+                graphicalDrawing.getSpriteTest(100,50,Color.PINK, tid.getTextInImage(), 15, 30),
                 tid.position.getX(),
                 tid.position.getY(), null
         ));
