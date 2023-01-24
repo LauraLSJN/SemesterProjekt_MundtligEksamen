@@ -27,6 +27,7 @@ public class Display extends JFrame {
         BufferStrategy bufferStartegy = canvas.getBufferStrategy();
         Graphics graphics = bufferStartegy.getDrawGraphics();
         graphics.drawImage(img, 0, 0, size.getDisplayWidth(), size.getDisplayHeight(), null);  //Tilføjer billedet -> Baggrunden
+        GraphicalDrawing graphicalDrawing = new GraphicalDrawing();
 
         //Henter gameObjects (FoodObjects & PlayerObjects) og tegner det - Anvender Lambda Expression
         game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i
@@ -43,10 +44,13 @@ public class Display extends JFrame {
                 shoppingBasket.position.getX(),
                 shoppingBasket.position.getY(), null
         ));
+
+
         //Test
 
         //Tegner tiden
-        GraphicalDrawing graphicalDrawing = new GraphicalDrawing();
+
+
         game.getGameTime().forEach(tid -> graphics.drawImage(
                 graphicalDrawing.getSpriteTest(100,50,Color.PINK, tid.getTextInImage(), 15, 30),
                 tid.position.getX(),
@@ -59,6 +63,8 @@ public class Display extends JFrame {
                 tid.position.getX(),
                 tid.position.getY(), null
         ));*/
+
+
 
         game.currentLevelDisplay(graphics); //Tegner level boksen
         graphics.dispose();

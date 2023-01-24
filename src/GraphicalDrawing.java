@@ -23,9 +23,17 @@ public class GraphicalDrawing {
         attributedText.addAttribute(TextAttribute.FOREGROUND, Color.WHITE);
         //Skal finde ud af hvordan x og y gøres generiske alt efter hvilken klasse element der skal tegnes
         graphics.drawString(attributedText.getIterator(), textX, textY);
-
-
         return image;
+
+    }
+
+
+    public Image getSpriteTest2(int x, int y, int width, int height, Color farve){
+        //Kode
+        return null;
+    }
+
+    public void setTextTest2(Graphics2D graphics, String textInImage, int x, int y){
 
     }
 

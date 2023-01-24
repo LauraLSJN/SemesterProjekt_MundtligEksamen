@@ -17,12 +17,14 @@ public class Game {
     private boolean won;
     private boolean lost;
     private int currentLevel;
+    String stringCurrentLevel;
 
     public Game(int currentLevel) {
         this.currentLevel = currentLevel;
         this.won = false;
         this.lost = false;
         this.stopDropFoodObjects = false;
+        stringCurrentLevel = String.valueOf(currentLevel);
 
         size = new Size();
         input = new Input();
