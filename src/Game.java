@@ -63,8 +63,9 @@ public class Game {
 
     }
 
+    //Alternativt switch case -> Bedre når man har mange else if statement
     //Metode der styrer levels
-    public void addLevels() { //Alternativt switch case -> Bedre når man har mange else if statement
+    public void addLevels() {
         if (currentLevel == 1) {
             gameTime.add(new GameTime(0,30,0));
             shoppingBaskets.add(new ShoppingBasket(5));
@@ -183,8 +184,6 @@ public class Game {
                     && ((gameObject.get(x).getPosition().getY() + size.getFoodObjectHeight()) <= (gameObject.get(1).getPosition().getY() + size.getPlayerObjectHeight() + 20)) //food y <= player y + size + 20
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) >= (gameObject.get(1).getPosition().getX() - 35)) //food x + size >= player x -35
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) <= (gameObject.get(1).getPosition().getX() + size.getFoodObjectWidth() + 60)) //food x + size <= player x + size + 60
-
-
             ) {
                 //ADD
                 shoppingBaskets.get(0).addCollectedFood(gameObject.get(x).price.getPrice());

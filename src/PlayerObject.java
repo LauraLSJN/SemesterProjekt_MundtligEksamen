@@ -18,7 +18,7 @@ public class PlayerObject extends GameObject {
         }
 
         if (player == 2){
-            position = new Position(250,440); //Starposition for player 2
+            position = new Position(250,440); //Startposition for player 2
         }
 
     }
@@ -26,7 +26,6 @@ public class PlayerObject extends GameObject {
     @Override
     public void updateGameObject() {
         speedX = 0; //Sikre at den ikke hele tiden bevæger sig
-
         oldPosX = position.getX(); //Gemmer tidligere x koordinat
 
         //Player 1
@@ -44,8 +43,6 @@ public class PlayerObject extends GameObject {
              if (controller.isRequestiongD() && player==2){
             speedX = speedX + this.speed;
         }
-
-
         position.setX(oldPosX+ speedX); //Sætter ny x-koordinat
     }
 
